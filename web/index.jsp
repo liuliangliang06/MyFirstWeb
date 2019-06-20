@@ -18,13 +18,19 @@
   <title>智能系统</title>
 </head>
 <body>
+
+<script>
+  //直接跳转首页
+ window.location.href="main";
+ // window.location.href="WEB-INF/content/welcome.jsp";
+</script>
+
 <div class="main-left">
   <ul class="main-nav" style="display:none;">
     <li id="liBA" data="BA"><a id="aBA" href="javascript:void(0)" onclick="Login.ChangeSys('BA')">BA系统</a></li>
     <li id="liZH" data="ZH"><a id="aIntegrated" href="javascript:void(0)" onclick="Login.ChangeSys('ZH')">综合管理</a></li>
     <li id="lisitemanage" class="active" data="sitemanage"><a id="aSite" href="javascript:void(0)" onclick="Login.ChangeSys('sitemanage')">现场管理</a></li>
-    <!--<li id="lirelationmanage" data="relationmanage"><a id="aRelation" href="javascript:void(0)" onclick="Login.ChangeSys('relationmanage')">相关方</a></li>-->
-  </ul>
+   </ul>
   <div class="table">
     <span id="span_logincom" class="loginmod-current" onclick="ChangeLoginMode('1')">账户登录</span>
     <span style="width:1%;color:red;height:18px;line-height:18px;display:inline-block;font-size:16px;color:#777777;">|</span>

@@ -13,7 +13,7 @@ public class Hello implements Controller {
         ModelAndView mv=new ModelAndView();
         mv.addObject("message","hello World");
         mv.addObject("age",15);
-        mv.setViewName("/WEB-INF/content/ajaxTest.jsp");
+        mv.setViewName("/WEB-INF/content/login.jsp");
         return mv;
     }
 }
