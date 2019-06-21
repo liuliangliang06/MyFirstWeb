@@ -47,13 +47,14 @@ body {
 /* Left column */
 .leftcolumn {
     float: left;
-    width: 1350px;
+    width: 200px;
+    height: 1000px;
 }
 
 /* 右侧栏 */
 .rightcolumn {
     float: left;
-    width: 450px;
+    width: 1600px;
     background-color: #f1f1f1;
     padding-left: 20px;
 }
@@ -142,4 +143,55 @@ li.dropdown {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.left33{
+    float: left;
+    width: 200px;
+    height: 1000px;
+    background-color: #F5F5DC;
+}
+.left33 ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+.left33 ul li{
+    width: 180px;
+}
+.left33 a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.left33 a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.left33 a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+.right33{
+    float: left;
+    width: 1600px;
+    height: 1000px;
+}
+table{
+    width:100%;
+}
+table td{
+    vertical-align: middle;
+}
+.location{
+    width:99%;
+    margin: 2% 0;
+}
+.location1{
+    width:99%;
 }

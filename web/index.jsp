@@ -20,9 +20,9 @@
 <body>
 
 <script>
-  //直接跳转首页
+  //直接跳转首页dispatcher-servlet.xml 中main请求
  window.location.href="main";
- // window.location.href="WEB-INF/content/welcome.jsp";
+
 </script>
 
 <div class="main-left">

@@ -9,20 +9,14 @@
 <html>
 <head>
     <title>中建七局第二建筑有限公司1111</title>
-
+    <%--引用CSS文档--%>
     <link href="<%=request.getContextPath() %>/css/index.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
 <div class="header">
-    <h1>中建七局第二建筑有限公司</h1>
-    <p>信息中心</p>
-</div>
-
-<div class="topnav">
-    <a href="#">链接</a>
-    <a href="#">链接</a>
-    <a href="#">链接</a>
-    <a href="#" style="float:right">链接</a>
+    <div class="header">
+        <%@ include file="header.jsp" %>
+    </div>
 </div>
 
 <div class="row">
@@ -65,4 +59,5 @@
     <h2>底部区域</h2>
 </div>
 </body>
+
 </html>
