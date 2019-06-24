@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.annotation.Resource;
 import java.util.Map;
+import static java.lang.System.out;
 
 @Controller
 @RequestMapping(value = "/appointments")
@@ -42,6 +42,18 @@ public class Test {
             back.setBackMsg("登录失败");
         }
 
+        return back;
+    }
+
+
+
+    @RequestMapping(value="/old")
+    @ResponseBody
+    public JsonBackData DF2(@RequestBody Map<String, String> map) {
+        String sql = "SELECT * from webdb.provider"; //查询提供者所有数据
+        JsonBackData back = null;
+        Map singleCustomer = template.queryForMap(sql);
+        out.println(sql);
         return back;
     }
 
