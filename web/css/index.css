@@ -143,3 +143,29 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+table {
+    width:770px;
+    text-align:center;
+    margin:20px;
+    color:#333;
+}
+
+table td{
+    border: 1px solid #e9e9e9;
+}
+.tt_bg{
+    background:#2166a9;
+    color:#fff;
+}
+.contact{
+    width:758px;
+    margin:80px auto 40px;
+
+}
+.contact td{
+    border: 1px solid #e9e9e9;
+}
+.ct_bg{
+    background:#f8f8f8;
+}

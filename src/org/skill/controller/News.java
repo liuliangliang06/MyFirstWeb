@@ -15,7 +15,7 @@ public class News {
 	Function Fun = new Function();// 引入数据处理方法类
 
 	//新闻列表查询方法
-	public String ListNewsFront(String sPage, String strPage) {
+	public String ListNewsFront(String sPage, String strPage,String sSql) {
 		try {// 用于获取系统运行异常信息
 
 			Connection Conn = DBConn.getConn();// 建立数据库连接
@@ -27,10 +27,10 @@ public class News {
 
 			int i;// 定义数字型变量
 			int intPage = 1;// 定义数字型变量并赋值1
-			int intPageSize = 5;// 定义数字型变量并赋值5
+			int intPageSize = 20;// 定义数字型变量并赋值5
 
 			// 创建sql语句查询News表全部信息
-			String sSql = "SELECT * from webdb.provider order by ID desc";
+			//sSql = "SELECT * from webdb.provider order by ID desc";
 			// 通过执行sql语句得到查询结果
 			rs = stmt.executeQuery(sSql);
 			
@@ -53,26 +53,30 @@ public class News {
 				// i属性小于页面显示条数并且查询结果集不为空，进行循环方法
 				while (i < intPageSize && !rs.isAfterLast()) {
 					// 定义数字型变量并赋值News表里的NewsID属性
-					int NewsID = rs.getInt("ID");
-					// 定义数字型变量并赋值News表里的NewsTitle属性
-					String NewsTitle = rs.getString("Name");
-					// 定义数字型变量并赋值News表里的NewsTime属性
-					String NewsTime = rs.getString("phone");
-					// 定义数字型变量并赋值News表里的AdminName属性
-					String AdminName = rs.getString("remarks");
-					// 返回属性添加字符串数据用于页面显示<tr>表示换行
+					int ID = rs.getInt("ID");
+					// 定义数字型变量并赋值News表里的各属性
+					String Name = rs.getString("Name");
+					String phone = rs.getString("phone");
+					String remarks = rs.getString("remarks");
+					String price=rs.getString("price");
+					String gameserver=rs.getString("gameserver");
+					String type=rs.getString("type");
 					sb.append("<tr>");
 					// 返回属性添加字符串数据用于页面显示新闻标题
-					sb.append("<td>" + NewsTitle + "</td>");
+					sb.append("<td>" + Name + "</td>");
 					// 返回属性添加字符串数据用于页面显示用户名
-					sb.append("<td >" + AdminName + "</td>");
+					sb.append("<td >" + phone + "</td>");
 					// 返回属性添加字符串数据用于页面显示新闻时间
-					sb.append("<td >" + NewsTime + "</td>");
+					sb.append("<td >" + price + "</td>");
+					sb.append("<td >" + gameserver + "</td>");
+					sb.append("<td >" + type + "</td>");
+					//1化圣号 2单开跑环号 3五开号 4群主推荐
+					sb.append("<td >" + remarks + "</td>");
 					// 返回属性添加字符串数据用于页面显示详情按钮
 					sb.append("<td ><a style=\"color:#3F862E\" target=\"_blank\" href=\"newsFrontDetail.jsp?newsId="
-							+ NewsID + "\">详情</a></td></tr>");
-					sb.append("<td ><a style=\"color:#3F862E\" target=\"_blank\" href=\"newsFrontDetail.jsp?newsId="
-							+ NewsID + "\">删除</a></td></tr>");
+							+ ID + "\">详情       </a>");
+					sb.append("<a style=\"color:#3F862E\" target=\"_blank\" href=\"newsFrontDetail.jsp?newsId="
+							+ ID + "\">删除        </a></td></tr>");
 					rs.next();// 判定是否存在下一条信息
 					i++;// i属性数值自增1
 				}

@@ -11,6 +11,15 @@ public class ProviderEntity {
     private String phone;
     private String remarks;
     private String textrue;
+    private String sSql;
+
+    public String getsSql() {
+        return sSql;
+    }
+
+    public void setsSql(String sSql) {
+        this.sSql = sSql;
+    }
 
     public int getId() {
         return id;

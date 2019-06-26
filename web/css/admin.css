@@ -182,16 +182,25 @@ li.dropdown {
     width: 1600px;
     height: 1000px;
 }
-table{
+
+/*后台主界面按钮*/
+.buttonArea{
     width:100%;
+    pidding:20px;
+    background-color: antiquewhite;
 }
-table td{
-    vertical-align: middle;
+/*后台主界面按钮.新增按钮框*/
+.buttonArea1{
+    width: 1000px;
+    height: 30px;
 }
-.location{
-    width:99%;
-    margin: 2% 0;
+/*后台主界面按钮.查询按钮*/
+.buttonArea2{
+    width: 1000px;
+    height: 50px;
 }
-.location1{
-    width:99%;
+
+.td{
+    border-style:solid;
+    border-width:5px;
 }

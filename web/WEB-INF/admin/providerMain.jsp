@@ -1,95 +1,82 @@
 <%--
+客户管理界面  能进行增删除改查
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2019/6/21
-  Time: 11:11
+  Date: 2019/6/25
+  Time: 8:59
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page import="org.skill.controller.*"%>
-<!DOCTYPE html>
+<%@ page import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page import="org.skill.controller.*" %>
 <html>
 <head>
+    <%--引用CSS文档--%>
+    <link href="<%=request.getContextPath() %>/css/admin.css" rel="stylesheet" type="text/css" media="all">
     <title>Title</title>
     <style>
-        table,th,td
-        {
-            border:1px solid black;
+        table, th, td {
+            padding:10px;
+            border:2px solid #371a24;
         }
+
     </style>
 </head>
-<SCRIPT>
-    //前后台传参办法
-    function bpmBefore() {
+<script>
+    function fun3() {
+        //下拉框设置值
+        var oSelect = document.getElementById("select1");
         var xhr = new XMLHttpRequest();
-        var back = null;
         var params = {
-            'selectedState': "zhenglixia",
-            'billCodeApply': 666
+            'oSelectType': oSelect.value,
+            'oSelectPrice': document.getElementById("select2").value,
         };//传入后台的参数
         xhr.responseType = "json";
-        xhr.open("POST", "http://localhost:8080/myFirst-Web/appoint/old", true);
-        //xhr.open("POST", "http://localhost:8080/myFirst-Web/appointments/new", true);
-
+        xhr.open("POST", "http://localhost:8080/myFirst-Web/appoint/select", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function (event) {
             if (this.readyState == 4 && this.status == 200) {
                 back = event.currentTarget.response;
-                var data = back.backData;
-                var table=document.getElementById("table");
-                for(var i=0;i<data.length;i++){
-                    var row=table.insertRow(table.rows.length);
-                    var c1=row.insertCell(0);
-                    c1.innerHTML=data[i].ID;
-                    var c2=row.insertCell(1);
-                    c2.innerHTML=data[i].Name;
-                    var c3=row.insertCell(2);
-                    c3.innerHTML=data[i].phone;
-                    var c4=row.insertCell(3);
-                    c4.innerHTML=data[i].remarks;
-                    var c5=row.insertCell(4);
-                    c5.innerHTML=data[i].textrue;
-                }
-
-
+                var jsonArray = back.backData;
+                removeDivSelectTable();
+                var headArray = [];
+                appendTable(jsonArray);
             }
-        };
+
+        }
         xhr.send(JSON.stringify(params));
     }
-    bpmBefore();
+</script>
+<div class="buttonArea" style="height: 50px">
+    <div class="buttonArea1">
+        <button type="button" onclick="bpmBefore();">新增客户</button>
+    </div>
+    <div class="buttonArea2">
+        <select id="select1">
+            <option value="3">五开号</option>
+            <option value="1">化圣号</option>
+            <option value="2">单开跑环号</option>
+            <option value="4">群主推荐</option>
+        </select>
+        <select id="select2">
+            <option value="1">0-300</option>
+            <option value="2">300-500</option>
+            <option value="3">500-1000</option>
+            <option value="4">1000-2000</option>
+            <option value="5">2000以上</option>
+        </select>
+        <button type="button" onclick="fun3();">查询</button>
+        <button type="button" onclick="bpmBefore()">增加</button>
+        <button type="button" onclick="removeDivSelectTable()">移除</button>
+        <button type="button" onclick="bpmBefore222()">js测试</button>
+        <button type="button" onclick="bpmBefore233()">js测试</button>
+    </div>
+</div>
 
-</SCRIPT>
-<table>
+<div id="selectTable">
+</div>
 
-
-<table id="table" border="1" cellspacing="0" cellpadding="0" >
-    <tr>
-        <th>ID</th>
-        <th>昵称</th>
-        <th>联系方式</th>
-        <th>级别</th>
-        <th>备注</th>
-
-    </tr>
-</table>
-<%--<%  ProviderController pc=new ProviderController();
-out.print(pc.DF3());
-%>--%>
-<button type="button" onclick="bpmBefore();">执行AJAX</button>
-<table>
-<%
-    request.setCharacterEncoding("UTF-8");
-    News news = new News();
-    String strPage = request.getParameter("intPage");
-    String sPage = request.getContextPath() + request.getServletPath()+ "?";
-    String sOK = news.ListNewsFront(sPage, strPage);
-    if (sOK.equals("No")) {
-        out.println("数据服务器出现错误！");
-    } else {
-        out.println(sOK);
-    }
-%>
-</table>
 </body>
+<!--js引用-->
+<script language="JAVASCRIPT" src='<%=request.getContextPath() %>/js/function.js'></script>
 </html>

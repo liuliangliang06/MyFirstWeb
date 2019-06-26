@@ -5,6 +5,7 @@
     <bean name="/main" class="org.skill.controller.Hello"></bean> <!--主页跳转此控制类-->
     <bean name="/admin" class="org.skill.controller.Admin"></bean> <!--管理主页-->
     <bean name="/provider" class="org.skill.controller.pageControl.ProviderPage"></bean> <!--管理主页-->
+    <bean name="/test" class="org.skill.controller.pageControl.TestPage"></bean> <!--管理主页-->
     <bean name="/login" class="org.skill.controller.Test"></bean> <!--据此拦截-->
     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
     <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>    <!-- 视图解析器 -->

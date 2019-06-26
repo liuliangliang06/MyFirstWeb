@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
+
 import static java.lang.System.out;
 
 
@@ -22,7 +24,7 @@ import static java.lang.System.out;
 public class ProviderController {
     @Resource(name = "jdbcTemplate")
     private JdbcTemplate template;//注入
-   String sql = "SELECT * from webdb.provider"; //查询提供者所有数据
+    String sql = "SELECT * from webdb.provider"; //查询提供者所有数据
     DBConnection DBConn = new DBConnection();// 引入连接数据库方法类
     //String sql = "11111"; //查询提供者所有数据
     String sql1 = "<tr>\n" +
@@ -34,16 +36,22 @@ public class ProviderController {
             "    <td><a style=\"color:#3F862E\" target=\"_blank\" href=\"newsFrontDetail.jsp?newsId=1\">详情</a></td>\n" +
             "</tr>";
     StringBuffer sb = new StringBuffer();
-    @RequestMapping(value="/old")
+
+    @RequestMapping(value = "/select")
     @ResponseBody
     public JsonBackData DF2(@RequestBody Map<String, String> map) {
-       sql1 = sql1 + sql1;
         JsonBackData back = null;
-        back = new JsonBackData();
-         List singleCustomer = template.queryForList(sql);
-        back.setBackMsg("成功了");
-        back.setBackData(singleCustomer);
-        out.println(sql1);
+        try {
+            back = new JsonBackData();
+            String sql = "SELECT * from webdb.provider ";
+            List list = template.queryForList(sql);
+            back.setBackData(list);
+            back.setBackMsg("登录成功");
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+            back.setBackMsg("登录失败");
+        }
+
         return back;
     }
 
@@ -61,8 +69,6 @@ public class ProviderController {
         out.println(sql1);
         return "666666666666666";
     }
-
-
 
 
 }

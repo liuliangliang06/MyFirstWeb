@@ -26,11 +26,11 @@
     <li><a href="#news">公司新闻</a></li>
     <li class="dropdown">
         <a href="#" class="dropbtn">产品概览</a>
-        <div class="dropdown-content">
+        <%--<div class="dropdown-content">
             <a href="#">铝合金防火窗</a>
             <a href="#">塑钢防火窗</a>
             <a href="#">耐火窗</a>
-        </div>
+        </div>--%>
     </li>
     <li class="dropdown">
         <a href="<%=request.getContextPath() %>/provider" class="dropbtn">货源管理</a>
@@ -67,7 +67,7 @@
         <a href="#" class="dropbtn">资讯动态</a>
     </li>
     <li class="dropdown">
-        <a href="#" class="dropbtn">联系我们</a>
+        <a href="<%=request.getContextPath() %>/test" class="dropbtn">测试页面</a>
     </li>
     <li class="dropdown">
         <a href="<%=request.getContextPath() %>/main" class="dropbtn">返回网页</a>
