@@ -16,8 +16,8 @@
     <title>Title</title>
     <style>
         table, th, td {
-            padding:10px;
-            border:2px solid #371a24;
+            padding: 10px;
+            border: 2px solid #371a24;
         }
 
     </style>
@@ -28,8 +28,9 @@
         var oSelect = document.getElementById("select1");
         var xhr = new XMLHttpRequest();
         var params = {
-            'oSelectType': oSelect.value,
-            'oSelectPrice': document.getElementById("select2").value,
+            'oSelectType': oSelect.value,  //获取下拉选择框的值
+            'oSelectPrice': document.getElementById("select2").value,   //获取金额值
+            'all':1
         };//传入后台的参数
         xhr.responseType = "json";
         xhr.open("POST", "http://localhost:8080/myFirst-Web/appoint/select", true);
@@ -37,19 +38,22 @@
         xhr.onreadystatechange = function (event) {
             if (this.readyState == 4 && this.status == 200) {
                 back = event.currentTarget.response;
-                var jsonArray = back.backData;
-                removeDivSelectTable();
-                var headArray = [];
-                appendTable(jsonArray);
+                if (back) {
+                    var jsonArray = back.backData;
+                    removeDivSelectTable('selectTable', 'tablebox')
+                    var headArray = [];
+                    appendTable(jsonArray);
+                }else{
+                    alert("无数据！")
+                }
             }
-
         }
         xhr.send(JSON.stringify(params));
     }
 </script>
 <div class="buttonArea" style="height: 50px">
     <div class="buttonArea1">
-        <button type="button" onclick="bpmBefore();">新增客户</button>
+        <button type="button" onclick="black();">新增客户</button>
     </div>
     <div class="buttonArea2">
         <select id="select1">
@@ -65,9 +69,9 @@
             <option value="4">1000-2000</option>
             <option value="5">2000以上</option>
         </select>
-        <button type="button" onclick="fun3();">查询</button>
-        <button type="button" onclick="bpmBefore()">增加</button>
-        <button type="button" onclick="removeDivSelectTable()">移除</button>
+        <button id="button1" type="button" onclick="fun3();">查询</button>
+        <button id="button2" type="button" onclick="bpmBefore()">查询所有</button>
+        <button type="button" onclick="removeDivSelectTable('selectTable','tablebox')">移除</button>
         <button type="button" onclick="bpmBefore222()">js测试</button>
         <button type="button" onclick="bpmBefore233()">js测试</button>
     </div>

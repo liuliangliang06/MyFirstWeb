@@ -43,13 +43,19 @@ public class ProviderController {
         JsonBackData back = null;
         try {
             back = new JsonBackData();
-            String sql = "SELECT * from webdb.provider ";
-            List list = template.queryForList(sql);
+            StringBuffer sb = new StringBuffer("SELECT * from webdb.provider");
+            String all=map.get("all");
+            if (all.equals("1")) {
+                String oSelectType = map.get("oSelectType");  //获取前台传参类型
+                String oSelectPrice = map.get("oSelectPrice");   //获取前台传参价格
+                sb.append(" where type='" + oSelectType + "'");
+            }
+            List list = template.queryForList(sb.toString());
             back.setBackData(list);
-            back.setBackMsg("登录成功");
+            back.setBackMsg("操作成功");
         } catch (DataAccessException e) {
             e.printStackTrace();
-            back.setBackMsg("登录失败");
+            back.setBackMsg("操作失败");
         }
 
         return back;

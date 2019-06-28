@@ -1,3 +1,6 @@
+/*返回类*/
+
+
 package org.skill.controller;
 
 public class JsonBackData {
