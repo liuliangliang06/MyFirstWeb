@@ -1,0 +1,27 @@
+.right33{
+    float:left;
+}
+
+/*后台主界面按钮*/
+.buttonArea{
+    float: left;
+    width:80%;
+    pidding:20px;
+    background-color: antiquewhite;
+}
+
+/*后台主界面按钮.新增按钮框*/
+.buttonArea1{
+    width: 80%;
+    height: 30px;
+}
+/*后台主界面按钮.查询按钮*/
+.buttonArea2{
+    width: 80%;
+    height: 50px;
+}
+
+.selectTable{
+    width: 80%;
+
+}

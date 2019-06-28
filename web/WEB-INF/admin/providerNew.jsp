@@ -26,9 +26,17 @@
         <li><a href="#contact">优质客户</a></li>
         <li><a href="#about">黑名单</a></li>
     </ul>
-    </div>
+</div>
 <div class="right33">
-    <%@ include file="providerMain.jsp" %>
+    <div class="up20">
+        <p3>这里是新增界面</p3>
+    </div>
+
+    <div class="up80">
+        <div class="left">1111</div>
+        <div class="right">222</div>
+    </div>
+
 </div>
 </body>
 

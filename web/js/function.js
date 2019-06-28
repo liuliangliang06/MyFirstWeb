@@ -57,7 +57,8 @@ function appendTable(jsonArray) {
             tr.appendChild(cell);
         }
         var cell = document.createElement("td");
-        cell.innerHTML = '<td><input id="warning"  type="button"   value="查看" onClick=clickPerson(' + jsonArray[tableRowNo].ID + ')><td><input  type="button"   value="删除" onClick=clickPerson(' + jsonArray[tableRowNo].ID + ')></td>';
+        cell.innerHTML = '<td><input id="warning"  type="button"   value="查看" onClick=clickPerson(' + jsonArray[tableRowNo].ID + ')><td>' +
+            '<input  type="button"   value="删除" onClick=clickPerson(' + jsonArray[tableRowNo].ID + ')></td>';
         tr.appendChild(cell);
         tr.appendChild(cell);
         table.appendChild(tr);
@@ -99,6 +100,12 @@ function HanHua(a) {
         return '权限'
     } else if (a == 'gameserver') {
         return '服务器'
+    } else if (a == 'arrival_time') {
+        return '到期时间'
+    } else if (a == 'status') {
+        return '状态'
+    } else if (a == 'mhxylabel') {
+        return '标签'
     } else {
         return a;
     }
@@ -107,27 +114,58 @@ function HanHua(a) {
 
 /*渲染方法，将数据库自动转化为页面表头自动,provider表,headCount判断*/
 function HanHuaMain(headCount, td) {
-    if (headCount == 7) {
+    if (headCount == 8) {
         if (td == 'A') {
             return '超级用户';
         } else if (td == 'B') {
             return 'VIP用户';
         } else if (td == 'C') {
             return '一般用户';
-        } else return '其他';
-    } else if (headCount == 6) {
-        if (td =='1') {
+        } else return td;
+    } else if (headCount == 4) {
+        if (td == '1') {
             return '化圣'
         } else if (td == '2') {
             return '单开'
         } else if (td == '3') {
             return '五开'
-        } else return '其他';
+        } else return td;
+    } else if (headCount == 6) {
+        return formatDate(td);
     } else {
         return td;
     }
 }
-function black(){
-    var nw=window.open ("你的新页面.html", "newwindow", "height=800, width=600, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no");
-    nw.moveBy(300, 500);
+
+function black() {
+    var xhr = new XMLHttpRequest();
+    var back = null;
+    var a='aaaa';
+    var b="我成功了";
+    var params = {
+        'all': 0,
+    };//传入后台的参数
+    xhr.responseType = "json";
+    xhr.open("POST", "http://localhost:8080/myFirst-Web/appoint/insert?name='"+a+"'&password='"+b+"'", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function (event) {
+        if (this.readyState == 4 && this.status == 200) {
+            back = event.currentTarget.response;
+           window.location.href="http://localhost:8080/myFirst-Web/appoint/insert";
+            // window.open('http://localhost:8080/myFirst-Web/appoint/insert', 'newwindow', 'height=100,width=400,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no');
+        }
+    }
+    xhr.send(JSON.stringify(params));
+}
+
+function formatDate(datetimes) {
+    var date = new Date(datetimes);
+    Y = date.getFullYear() + '-';
+    M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    D = date.getDate() + ' ';
+//      h = date.getHours() + ':';
+//      m = date.getMinutes() + ':';
+//      s = date.getSeconds();
+//      年 月 日 时 分 秒
+    return Y + M + D;
 }

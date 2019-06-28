@@ -12,14 +12,15 @@
 <html>
 <head>
     <%--引用CSS文档--%>
-    <link href="<%=request.getContextPath() %>/css/admin.css" rel="stylesheet" type="text/css" media="all">
+    <link href="<%=request.getContextPath() %>/css/main.css" rel="stylesheet" type="text/css" media="all">
     <title>Title</title>
     <style>
         table, th, td {
-            padding: 10px;
-            border: 2px solid #371a24;
+            padding: 5px;
+            border: 1px solid #371a24;
         }
-
+        #tablebox{  left: 500px;
+            top:230px;}
     </style>
 </head>
 <script>

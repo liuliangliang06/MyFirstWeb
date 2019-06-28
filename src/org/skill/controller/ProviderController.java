@@ -1,6 +1,8 @@
 package org.skill.controller;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.mingrisoft.DBConnection;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -11,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
@@ -43,14 +48,17 @@ public class ProviderController {
         JsonBackData back = null;
         try {
             back = new JsonBackData();
-            StringBuffer sb = new StringBuffer("SELECT * from webdb.provider");
-            String all=map.get("all");
+            StringBuffer sb = new StringBuffer("SELECT ID,`Name`,phone,price,type,gameserver,arrival_time,`status`,mhxylabel FROM webdb.provider");
+            String all = map.get("all");
             if (all.equals("1")) {
                 String oSelectType = map.get("oSelectType");  //获取前台传参类型
                 String oSelectPrice = map.get("oSelectPrice");   //获取前台传参价格
                 sb.append(" where type='" + oSelectType + "'");
             }
             List list = template.queryForList(sb.toString());
+            // rs 是对象,只要里面有日期类型,就可以自动转换格式
+            //JSON.toJSONStringWithDateFormat(list, "yyyy-MM-dd hh:mm:ss", SerializerFeature.WriteDateUseDateFormat);
+
             back.setBackData(list);
             back.setBackMsg("操作成功");
         } catch (DataAccessException e) {
@@ -61,9 +69,25 @@ public class ProviderController {
         return back;
     }
 
+    @RequestMapping(value = "/insert")
+    @ResponseBody
+    public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
+        //JsonBackData back = null;
+        ModelAndView mv = new ModelAndView();
+        //name=css&password=123
+        String strId = httpServletRequest.getParameter("name");
+        String  aaa=httpServletRequest.getParameter("password");
+        try {
+            mv.addObject("message", "hello World");
+            mv.addObject("age", 15);
+            mv.setViewName("/WEB-INF/admin/providerNew.jsp");  //主页视图
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }
 
-    //写一个方法，传来的参数是个sql语句，然后生成视图，遍历两次生成一个<tr><td>
-    //Map singleCustomer = template.queryForMap(sql);
+        return mv;
+    }
+
 
     public String DF3() {
         sql1 = sql1 + sql1;
