@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="test">
+    <output-path>$PROJECT_DIR$/out/artifacts/test</output-path>
+    <root id="archive" name="test.war">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/web/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="myFirst" />
+          <element id="library" level="project" name="com" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
+          <element id="library" level="project" name="Spring MVC-4.3.18.RELEASE" />
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="myFirst/web/Web" />
+    </root>
+  </artifact>
+</component>

@@ -22,14 +22,14 @@
 <div class="row">
     <div class="leftcolumn">
         <div class="card">
-            <h2>文章标题</h2>
+            <h2>公司新闻</h2>
             <h5>2019 年 4 月 17日</h5>
             <div class="fakeimg" style="height:200px;">图片</div>
             <p>一些文本...</p>
             <p>菜鸟教程 - 学的不仅是技术，更是梦想！菜鸟教程 - 学的不仅是技术，更是梦想！菜鸟教程 - 学的不仅是技术，更是梦想！菜鸟教程 - 学的不仅是技术，更是梦想！</p>
         </div>
         <div class="card">
-            <h2>文章标题</h2>
+            <h2>精选产品</h2>
             <h5>2019 年 4 月 17日</h5>
             <div class="fakeimg" style="height:200px;">图片</div>
             <p>一些文本...</p>
@@ -38,7 +38,7 @@
     </div>
     <div class="rightcolumn">
         <div class="card">
-            <h2>关于我</h2>
+            <h2>联系我们</h2>
             <div class="fakeimg" style="height:100px;">图片</div>
             <p>关于我的一些信息..</p>
         </div>
@@ -49,8 +49,8 @@
             <div class="fakeimg"><p>图片</p></div>
         </div>
         <div class="card">
-            <h3>关注我</h3>
-            <p>一些文本...</p>
+            <h3>精品案例</h3>
+            <p>一些文本...</p>我
         </div>
     </div>
 </div>

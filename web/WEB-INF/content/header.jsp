@@ -14,7 +14,7 @@
 <!--头部-->
 <div class="toplogo">
     <%--<a href="index.jsp"><img src="img/logo.png" alt=""> </a>--%>
-    <h1> 中建七局第二建筑有限公司</h1>
+    <h1> 刘亮亮 刘果果 徐晓智</h1>
     <%--    <h1> 妖怪梦幻西游五开租号平台</h1>--%>
     <%--引用CSS文档--%>
     <link href="<%=request.getContextPath() %>/css/index.css" rel="stylesheet" type="text/css" media="all">
@@ -35,9 +35,9 @@
     <li class="dropdown">
         <a href="#" class="dropbtn">客户管理</a>
         <div class="dropdown-content">
-            <a href="#">五开号</a>
-            <a href="#">单开号</a>
-            <a href="#">精品号</a>
+            <a href="#">精品不防火门</a>
+            <a href="#">防火窗</a>
+            <a href="#">互联网</a>
         </div>
     </li>
     <li class="dropdown">
